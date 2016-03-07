@@ -107,6 +107,7 @@ namespace ZombiePong
                 ball.Velocity = ball.Velocity * new Vector2(-1, 1);
             if (ball.Location.Y > 750 - 16 || ball.Location.Y < 0)
                 ball.Velocity = ball.Velocity * new Vector2(1, -1);
+            if (ball.isBoxColliding(paddle1.BoundingBoxRect))
 
             for (int i = 0; i < zombies.Count; i++)
             {
