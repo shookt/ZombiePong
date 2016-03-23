@@ -21,7 +21,10 @@ namespace ZombiePong
         Texture2D background, spritesheet;
 
         Sprite paddle1, paddle2, ball;
+        Random rand = new Random();
 
+        const int width = 1024;
+        const int height = 768;
         List<Sprite> zombies = new List<Sprite>();
 
         public Game1()
@@ -104,21 +107,24 @@ namespace ZombiePong
             paddle1.Location = new Vector2(paddle1.Location.X, ms.Y);
 
             if (ball.Location.X < -20)
-                ball.Location + new Vector2(700, 350);
+                ball.Location = new Vector2(700, 350);
             if (ball.Location.X > 1044)
-                ball.Location + new Vector2 (400, 350);
+                ball.Location = new Vector2 (400, 350);
             if (ball.Location.Y >= height - 16)
-                ball.Velocity + new Vector2(ball.Velocity.X, ball.Velocity.Y * -1);
+                ball.Velocity = new Vector2(ball.Velocity.X, ball.Velocity.Y * -1);
             if (ball.Location.Y <= 0)
                 ball.Velocity = new Vector2(ball.Velocity.X, ball.Velocity.Y * -1);
-            if (paddle1.Location.Y = 0)
+
+            if (paddle1.Location.Y <= 0)
                 paddle1.Location = new Vector2(paddle1.Location.X, 0);
             if (paddle1.Location.Y >= height)
                 paddle1.Location = new Vector2(paddle1.Location.X, height);
-            5
+
+            //needs to be fix
             paddle2.Location = new Vector2(paddle2.Location.X, ball.Center.Y);
-            if (ball.Location.X > 1000 - 16 || ball.Location.X < 0)
-                ball.Velocity = ball.Velocity * new Vector2(-1, 1);
+            if (ball.IsBoxColliding(paddle1.BoundingBoxRect) && ball.Location.Y != paddle1.Center.Y)
+            {
+
             if (ball.Location.Y > 750 - 16 || ball.Location.Y < 0)
                 ball.Velocity = ball.Velocity * new Vector2(1, -1);
             if (ball.isBoxColliding(paddle1.BoundingBoxRect))
