@@ -124,7 +124,8 @@ namespace ZombiePong
             paddle2.Location = new Vector2(paddle2.Location.X, ball.Center.Y);
             if (ball.IsBoxColliding(paddle1.BoundingBoxRect) && ball.Location.Y != paddle1.Center.Y)
             {
-
+                ball.Velocity = new Vector2(ball.Velocity.X * -1.000000000038f, (float)Math.Cos(ball.Location.Y - paddle1.Center.Y) * -100);
+                Window.Title = ("ball Y: " + ball.Location.Y + " \t paddle1 Y: " + paddle1.Center.Y);
             if (ball.Location.Y > 750 - 16 || ball.Location.Y < 0)
                 ball.Velocity = ball.Velocity * new Vector2(1, -1);
             if (ball.isBoxColliding(paddle1.BoundingBoxRect))
@@ -138,7 +139,7 @@ namespace ZombiePong
                 }
 
             base.Update(gameTime);
-           }
+         }
 
         /// <summary>
         /// This is called when the game should draw itself.
