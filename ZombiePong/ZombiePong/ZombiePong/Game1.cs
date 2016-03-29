@@ -130,15 +130,15 @@ namespace ZombiePong
             if (ball.isBoxColliding(paddle1.BoundingBoxRect))
 
             for (int i = 0; i < zombies.Count; i++)
-            {
+                {
                 zombies[i].Update(gameTime);
 
                 // Zombie logic goes here.. 
                 zombies[i].FlipHorizontal = false;
-            }
+                }
 
             base.Update(gameTime);
-        }
+           }
 
         /// <summary>
         /// This is called when the game should draw itself.
