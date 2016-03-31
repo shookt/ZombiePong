@@ -121,7 +121,7 @@ namespace ZombiePong
                 paddle1.Location = new Vector2(paddle1.Location.X, height);
 
             //needs to be fix
-            paddle2.Location = new Vector2(paddle2.Location.X, ball.Center.Y);
+            paddle2.Location = new Vector2(paddle2.Location.X, ball.Center.Y + 38);
             if (ball.IsBoxColliding(paddle1.BoundingBoxRect) && ball.Location.Y != paddle1.Center.Y)
             {
                 ball.Velocity = new Vector2(ball.Velocity.X * -1.000000000038f, (float)Math.Cos(ball.Location.Y - paddle1.Center.Y) * -100);
@@ -141,6 +141,8 @@ namespace ZombiePong
 
                 // Zombie logic goes here.. 
                 zombies[i].FlipHorizontal = false;
+
+
                 }
 
             base.Update(gameTime);
