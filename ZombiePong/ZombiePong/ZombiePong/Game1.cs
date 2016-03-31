@@ -126,9 +126,14 @@ namespace ZombiePong
             {
                 ball.Velocity = new Vector2(ball.Velocity.X * -1.000000000038f, (float)Math.Cos(ball.Location.Y - paddle1.Center.Y) * -100);
                 Window.Title = ("ball Y: " + ball.Location.Y + " \t paddle1 Y: " + paddle1.Center.Y);
-            if (ball.Location.Y > 750 - 16 || ball.Location.Y < 0)
-                ball.Velocity = ball.Velocity * new Vector2(1, -1);
-            if (ball.isBoxColliding(paddle1.BoundingBoxRect))
+            }
+            if (ball.IsBoxColliding(paddle2.BoundingBoxRect) && ball.Location.Y != paddle2.Center.Y)
+            {
+                ball.Velocity = new Vector2(ball.Velocity.X * -1.000000000038f, (float)Math.Cos(ball.Location.Y - paddle1.Center.Y) * -100);
+                Window.Title = ("ball Y: " + ball.Location.Y + " \t paddle2 Y: " + paddle2.Center.Y);
+            }
+
+            ball.Update(gameTime);
 
             for (int i = 0; i < zombies.Count; i++)
                 {
